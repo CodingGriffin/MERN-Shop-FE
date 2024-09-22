@@ -1,27 +1,9 @@
 "use client";
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 import Image from "next/image";
 import { useRouter, usePathname } from "next/navigation";
 export default function Header() {
   const router = useRouter();
-
-  const handleLogin = () => {
-    router.push("/login");
-  };
-  const handleSignup = () => {
-    router.push("/signup");
-  };
-  const handleLogout = () => {
-    if (typeof window !== 'undefined') {
-      console.log("handleLogout ======>>>>>>>>>>");
-      localStorage.setItem("token", "");
-      router.push("/");
-    }
-  };
-  const handleMyAccount = () => {
-    router.push("/myAccount");
-  };
-
   return (
     <header className="bg-white shadow-md">
         <nav className="container mx-auto px-6 py-3 flex justify-between items-center">
