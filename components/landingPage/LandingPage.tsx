@@ -20,7 +20,8 @@ const LandingPage: any = () => {
     console.log(e)
   }
   return (
-    <div className="">
+    <main className="container mx-auto px-6 py-8">
+
       <Carousel/>
 
       <h1 className="text-4xl font-bold text-center mb-8 text-pink-600">סלון מארי - המוסד הותיק ביותר בנתניה לתלתלים ופאות</h1>
@@ -125,7 +126,7 @@ const LandingPage: any = () => {
           <button type="submit" className="bg-pink-600 text-white px-6 py-3 rounded-lg hover:bg-pink-700 transition duration-300" onClick={(e) => sendEmail(e)}>שלח הודעה</button>
         </form>
       </section>
-    </div>
+    </main>
   );
 };
 
