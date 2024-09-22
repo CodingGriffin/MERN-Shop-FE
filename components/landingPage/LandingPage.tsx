@@ -3,6 +3,7 @@ import React from "react";
 import Carousel from "../carousel/Carsoul";
 import { put, post, get } from "../../api/axios";
 import { useState, useEffect } from 'react';
+import Link from "next/link";
 
 const apiHost = "http://localhost:5050"
 
@@ -41,7 +42,14 @@ const LandingPage: any = () => {
                           <img src={`images/${product.image}`} alt={product.name} className="w-full h-48 object-cover rounded-lg mb-4" />
                           <h3 className="text-xl font-semibold mb-2">{product.name}</h3>
                           <p className="text-gray-600 mb-4">₪{product.price}</p>
-                          <a href="{{ url_for('product_details', product_id=product.id) }}" className="bg-pink-600 text-white px-4 py-2 rounded-lg hover:bg-pink-700 transition duration-300">לפרטים נוספים</a>
+                          <Link href={{
+                                pathname: '/product',
+                                query: {
+                                  id: product.id,
+                                }}} 
+                                className="bg-pink-600 text-white px-4 py-2 rounded-lg hover:bg-pink-700 transition duration-300">
+                            לפרטים נוספים
+                          </Link>
                         </div>
             })}
           </div>
@@ -73,7 +81,7 @@ const LandingPage: any = () => {
                     <img src={`images/${post.image}`} alt={post.title } className="w-full h-48 object-cover rounded-lg mb-4" />
                     <h3 className="text-xl font-semibold mb-2">{post.title}</h3>
                     <p className="mb-4">{post.excerpt}</p>
-                    <a href="{{ url_for('blog') }}#{{ post.id }}" className="text-pink-600 hover:text-pink-700">קרא עוד...</a>
+                    <a href="/blogs" className="text-pink-600 hover:text-pink-700">קרא עוד...</a>
                     </article>
           })}
         </div>
