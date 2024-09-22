@@ -31,6 +31,10 @@ const LandingPage: any = () => {
     const res: any = await post(`${apiHost}/api/contact`, {name: name, email: email, message: message}, {});
     await setMessage(res.data.sucess);
     await setStatus(true);
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   }
   return (
     <>
