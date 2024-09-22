@@ -2,8 +2,10 @@
 import React from "react";
 import Carousel from "../carousel/Carsoul";
 import { put, post, get } from "../../api/axios";
-const apiHost = "http://localhost:5050"
 import { useState, useEffect } from 'react';
+
+const apiHost = "http://localhost:5050"
+
 const LandingPage: any = () => {
   const [products, setProducts] = useState([]);
   const [blogs, setBlogs] = useState([]);
@@ -110,7 +112,7 @@ const LandingPage: any = () => {
 
       <section className="text-center mb-12">
         <h2 className="text-3xl font-semibold mb-4 text-pink-600">השאירו פרטים ונחזור אליכם</h2>
-        <form className="max-w-lg mx-auto bg-white p-8 rounded-lg shadow-md">
+        <form action={`${apiHost}/api/contact`} method="POST" className="max-w-lg mx-auto bg-white p-8 rounded-lg shadow-md">
           <div className="mb-4">
             <label className="block text-gray-700 font-bold mb-2">שם מלא</label>
             <input type="text" id="name" name="name" required className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-600" />
