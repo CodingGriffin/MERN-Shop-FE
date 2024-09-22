@@ -6,10 +6,17 @@ import { useSearchParams  } from "next/navigation";
 
 const apiHost = "http://localhost:5050"
 
+type Product = {
+  image: string
+  name: string
+  price: number
+  description: string
+}
+
 const DetailPage: any = () => {
   const searchParams = useSearchParams()
   const id = searchParams.get('id');
-  const [product, setProduct] = useState({});
+  const [product, setProduct] = useState<Product>({} as Product);
   useEffect(() => {
     const fetchData = async () => {
       const res: any = await get(`${apiHost}/api/products/${id}`, {}, {});

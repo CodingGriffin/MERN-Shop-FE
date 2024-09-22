@@ -4,12 +4,16 @@ import Carousel from "../carousel/Carsoul";
 import { put, post, get } from "../../api/axios";
 import { useState, useEffect } from 'react';
 import Link from "next/link";
+import { bool } from "sharp";
+import { eachDay } from "date-fns";
 
 const apiHost = "http://localhost:5050"
 
 const LandingPage: any = () => {
   const [products, setProducts] = useState([]);
   const [blogs, setBlogs] = useState([]);
+  const [msgData, setMessage] = useState("");
+  const [status, setStatus] = useState(false)
   useEffect(() => {
     const fetchData = async () => {
       const res: any = await get(`${apiHost}/api/landing`, {}, {});
@@ -17,12 +21,26 @@ const LandingPage: any = () => {
       await setBlogs(res.data.blogs);
     }
     fetchData();
-  }, []);
+  }, [status]);
 
-  const sendEmail = (e: any) => {
-    console.log(e)
+  const sendEmail = async (event: any) => {
+    event.preventDefault();
+    const name = event.target.name.value;
+    const email = event.target.email.value;
+    const message = event.target.message.value;
+    const res: any = await post(`${apiHost}/api/contact`, {name: name, email: email, message: message}, {});
+    await setMessage(res.data.sucess);
+    await setStatus(true);
   }
   return (
+    <>
+    {status &&
+      <div className="container mx-auto px-6 py-4">
+            <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+                <span className="block sm:inline">{msgData}</span>
+            </div>
+      </div>
+    }
     <main className="container mx-auto px-6 py-8">
 
       <Carousel/>
@@ -120,7 +138,7 @@ const LandingPage: any = () => {
 
       <section className="text-center mb-12">
         <h2 className="text-3xl font-semibold mb-4 text-pink-600">השאירו פרטים ונחזור אליכם</h2>
-        <form action={`${apiHost}/api/contact`} method="POST" className="max-w-lg mx-auto bg-white p-8 rounded-lg shadow-md">
+        <form onSubmit={sendEmail} className="max-w-lg mx-auto bg-white p-8 rounded-lg shadow-md">
           <div className="mb-4">
             <label className="block text-gray-700 font-bold mb-2">שם מלא</label>
             <input type="text" id="name" name="name" required className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-600" />
@@ -133,10 +151,11 @@ const LandingPage: any = () => {
             <label className="block text-gray-700 font-bold mb-2">הודעה</label>
             <textarea id="message" name="message" required className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-600" rows={4}></textarea>
           </div>
-          <button type="submit" className="bg-pink-600 text-white px-6 py-3 rounded-lg hover:bg-pink-700 transition duration-300" onClick={(e) => sendEmail(e)}>שלח הודעה</button>
+          <button type="submit" className="bg-pink-600 text-white px-6 py-3 rounded-lg hover:bg-pink-700 transition duration-300">שלח הודעה</button>
         </form>
       </section>
     </main>
+    </>
   );
 };
 
