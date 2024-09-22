@@ -43,10 +43,10 @@ const Carousel = () => {
           />
         ))}
       </div>
-      <button className="carousel-prev absolute top-1/2 left-4 transform -translate-y-1/2 bg-white bg-opacity-50 rounded-full p-2">
+      <button onClick={() => {prevSlide()}} className="carousel-prev absolute top-1/2 left-4 transform -translate-y-1/2 bg-white bg-opacity-50 rounded-full p-2">
         <i className="fas fa-chevron-left text-pink-600"></i>
 			</button>
-			<button className="carousel-next absolute top-1/2 right-4 transform -translate-y-1/2 bg-white bg-opacity-50 rounded-full p-2">
+			<button onClick={() => {nextSlide()}} className="carousel-next absolute top-1/2 right-4 transform -translate-y-1/2 bg-white bg-opacity-50 rounded-full p-2">
 					<i className="fas fa-chevron-right text-pink-600"></i>
 			</button>
     </div>
