@@ -11,10 +11,8 @@ export default function Page() {
   return (
     <>
       <Header />
-      <main className="container mx-auto px-6 py-8">
         <LandingPage />
-      </main>
-    <Footer/>
+      <Footer/>
     </>
   )
 }
