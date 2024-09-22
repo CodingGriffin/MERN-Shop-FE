@@ -32,7 +32,7 @@ export default function Header() {
                 <li><a href="/" className="text-gray-700 hover:text-pink-600">דף הבית</a></li>
                 <li><a href="/about" className="text-gray-700 hover:text-pink-600">אודות המספרה</a></li>
                 <li><a href="/products" className="text-gray-700 hover:text-pink-600">מוצרים</a></li>
-                <li><a href="/blog" className="text-gray-700 hover:text-pink-600">בלוג</a></li>
+                <li><a href="/blogs" className="text-gray-700 hover:text-pink-600">בלוג</a></li>
                 <li><a href="#contact-form" className="bg-pink-600 text-white px-4 py-2 rounded-lg hover:bg-pink-700 transition duration-300">הזמן תור</a></li>
             </ul>
         </nav>
