@@ -1,14 +1,19 @@
 "use client";
 import React from "react";
 import { get } from "../../api/axios";
-const apiHost = "http://localhost:5050"
 import { useState, useEffect } from 'react';
+import { useSearchParams  } from "next/navigation";
+
+const apiHost = "http://localhost:5050"
+
 const DetailPage: any = () => {
-  const [products, setProducts] = useState([]);
+  const searchParams = useSearchParams()
+  const id = searchParams.get('id');
+  const [product, setProduct] = useState({});
   useEffect(() => {
     const fetchData = async () => {
-      const res: any = await get(`${apiHost}/api/products`, {}, {});
-      await setProducts(res.data);
+      const res: any = await get(`${apiHost}/api/products/${id}`, {}, {});
+      await setProduct(res.data);
     }
     fetchData();
   }, []);
@@ -16,19 +21,18 @@ const DetailPage: any = () => {
   return (
     <main className="container mx-auto px-6 py-8">
 
-      <h1 className="text-4xl font-bold text-center mb-8 text-pink-600">המוצרים שלנו</h1>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {products?.map((product: any) => {
-          return  <div className="bg-white p-6 rounded-lg shadow-md">
-                    <a href="{{ url_for('product_details', product_id=product.id) }}">
-                      <img src={`images/${product.image}`} alt={product.name} className="w-full h-48 object-cover rounded-lg mb-4" />
-                      <h2 className="text-xl font-semibold mb-2">{product.name}</h2>
-                      <p className="text-gray-600 mb-4">₪{product.price}</p>
-                    </a>
-                    <button className="bg-pink-600 text-white px-4 py-2 rounded hover:bg-pink-700 transition duration-300">הוסף לסל</button>
-                  </div>
-        })}
+      <div className="container mx-auto px-4 py-8">
+        <div className="flex flex-wrap -mx-4">
+          <div className="w-full md:w-1/2 px-4 mb-8 md:mb-0">
+            <img src={`images/${product.image}`} alt={product.name} className="w-full h-auto object-cover rounded-lg shadow-md" />
+          </div>
+          <div className="w-full md:w-1/2 px-4">
+            <h1 className="text-3xl font-bold mb-4 text-pink-600">{product.name}</h1>
+            <p className="text-xl font-semibold mb-4 text-gray-700">₪{product.price}</p>
+            <p className="text-gray-600 mb-6">{product.description}</p>
+            <button className="bg-pink-600 text-white px-6 py-3 rounded-lg hover:bg-pink-700 transition duration-300">הוסף לסל</button>
+          </div>
+        </div>
       </div>
     </main>
 
