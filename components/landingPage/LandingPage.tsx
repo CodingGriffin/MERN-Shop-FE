@@ -4,8 +4,6 @@ import Carousel from "../carousel/Carsoul";
 import { put, post, get } from "../../api/axios";
 import { useState, useEffect } from 'react';
 import Link from "next/link";
-import { bool } from "sharp";
-import { eachDay } from "date-fns";
 
 const apiHost = "http://localhost:5050"
 
