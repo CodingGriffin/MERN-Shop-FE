@@ -4,7 +4,7 @@ import { get } from "../../api/axios";
 import { useState, useEffect } from 'react';
 import { useSearchParams  } from "next/navigation";
 
-const apiHost = "http://localhost:5050"
+const apiHost = "https://mern-shop-be.onrender.com"
 
 type Product = {
   image: string

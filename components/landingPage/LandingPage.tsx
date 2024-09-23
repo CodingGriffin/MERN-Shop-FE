@@ -5,7 +5,7 @@ import { put, post, get } from "../../api/axios";
 import { useState, useEffect } from 'react';
 import Link from "next/link";
 
-const apiHost = "http://localhost:5050"
+const apiHost = "https://mern-shop-be.onrender.com"
 
 const LandingPage: any = () => {
   const [products, setProducts] = useState([]);
