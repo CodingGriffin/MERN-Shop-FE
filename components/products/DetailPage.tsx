@@ -3,7 +3,7 @@ import React from "react";
 import { get } from "../../api/axios";
 import { useState, useEffect } from 'react';
 import { useSearchParams  } from "next/navigation";
-import apiHost from "../../api/axios/common";
+import {apiHost} from "../../api/axios/common";
 
 type Product = {
   image: string

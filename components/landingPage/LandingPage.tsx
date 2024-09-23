@@ -4,7 +4,7 @@ import Carousel from "../carousel/Carsoul";
 import { put, post, get } from "../../api/axios";
 import { useState, useEffect } from 'react';
 import Link from "next/link";
-import apiHost from "../../api/axios/common";
+import {apiHost} from "../../api/axios/common";
 
 const LandingPage: any = () => {
   const [products, setProducts] = useState([]);

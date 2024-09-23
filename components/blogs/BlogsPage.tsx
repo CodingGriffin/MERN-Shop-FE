@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
 import { put, post, get } from "../../api/axios";
-import apiHost from "../../api/axios/common";
 import { useState, useEffect } from 'react';
+import {apiHost} from "../../api/axios/common";
 
 const BlogsPage: any = () => {
   const [blogs, setBlogs] = useState([]);
