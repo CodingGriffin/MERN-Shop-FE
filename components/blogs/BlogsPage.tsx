@@ -1,8 +1,9 @@
 "use client";
 import React from "react";
 import { put, post, get } from "../../api/axios";
-const apiHost = "https://mern-shop-be.onrender.com"
+import apiHost from "../../api/axios/common";
 import { useState, useEffect } from 'react';
+
 const BlogsPage: any = () => {
   const [blogs, setBlogs] = useState([]);
   useEffect(() => {

@@ -3,8 +3,7 @@ import React from "react";
 import { get } from "../../api/axios";
 import { useState, useEffect } from 'react';
 import Link from "next/link";
-
-const apiHost = "https://mern-shop-be.onrender.com"
+import apiHost from "../../api/axios/common";
 
 const ProductsPage: any = () => {
   const [products, setProducts] = useState([]);

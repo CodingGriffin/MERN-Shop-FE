@@ -3,8 +3,7 @@ import React from "react";
 import { get } from "../../api/axios";
 import { useState, useEffect } from 'react';
 import { useSearchParams  } from "next/navigation";
-
-const apiHost = "https://mern-shop-be.onrender.com"
+import apiHost from "../../api/axios/common";
 
 type Product = {
   image: string
